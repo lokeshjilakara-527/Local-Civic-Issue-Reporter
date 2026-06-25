@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profile | Civic Issue Reporter</title>
+<meta name="description" content="Civic Issue Reporter — citizen grievance portal for reporting and tracking local civic issues (academic project)." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b2545'/><circle cx='50' cy='50' r='6' fill='%23ff9933'/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/gov.css">
+</head><body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="tricolor"></div>
+<div class="topbar"><div class="wrap">
+  <span class="gov-tag"><i class="fas fa-landmark"></i> Government of Andhra Pradesh — Citizen Services (Demo)</span>
+  <span class="topbar-tools">
+    <span style="margin-right:6px">Text size</span>
+    <button class="ts" data-size="dec" aria-label="Decrease text size">A-</button>
+    <button class="ts" data-size="reset" aria-label="Reset text size">A</button>
+    <button class="ts" data-size="inc" aria-label="Increase text size">A+</button>
+  </span>
+</div></div>
+<header class="masthead"><div class="wrap masthead-row">
+  <a class="brand" href="main.html">
+    <svg class="emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Civic Issue Reporter emblem">
+  <defs><path id="seal" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+  <circle cx="50" cy="50" r="48" fill="#0b2545" stroke="#ff9933" stroke-width="3"/>
+  <text font-size="6.4" font-weight="700" letter-spacing="1.6" fill="#ff9933"><textPath href="#seal" startOffset="2%">★ CIVIC ISSUE REPORTER ★ ANDHRA PRADESH</textPath></text>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+  <g stroke="#ffffff" stroke-width="1.3"><line x1="59.0" y1="50.0" x2="79.0" y2="50.0"/><line x1="58.3" y1="53.4" x2="76.8" y2="61.1"/><line x1="56.4" y1="56.4" x2="70.5" y2="70.5"/><line x1="53.4" y1="58.3" x2="61.1" y2="76.8"/><line x1="50.0" y1="59.0" x2="50.0" y2="79.0"/><line x1="46.6" y1="58.3" x2="38.9" y2="76.8"/><line x1="43.6" y1="56.4" x2="29.5" y2="70.5"/><line x1="41.7" y1="53.4" x2="23.2" y2="61.1"/><line x1="41.0" y1="50.0" x2="21.0" y2="50.0"/><line x1="41.7" y1="46.6" x2="23.2" y2="38.9"/><line x1="43.6" y1="43.6" x2="29.5" y2="29.5"/><line x1="46.6" y1="41.7" x2="38.9" y2="23.2"/><line x1="50.0" y1="41.0" x2="50.0" y2="21.0"/><line x1="53.4" y1="41.7" x2="61.1" y2="23.2"/><line x1="56.4" y1="43.6" x2="70.5" y2="29.5"/><line x1="58.3" y1="46.6" x2="76.8" y2="38.9"/></g>
+  <circle cx="50" cy="50" r="6" fill="#ff9933"/>
+</svg>
+    <span class="brand-text">
+      <strong>Civic Issue Reporter</strong>
+      <span class="brand-sub te">ఆంధ్రప్రదేశ్ ప్రభుత్వం · Government of Andhra Pradesh</span>
+    </span>
+  </a>
+  <div class="helpline">Toll-Free Helpline <strong>1800-425-0000</strong></div>
+</div></header>
+<nav class="mainnav"><div class="wrap">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  <ul class="navlinks" id="navLinks">
+        <li><a class="" href="main.html">Dashboard</a></li>
+        <li><a class="" href="report.html">Report an Issue</a></li>
+        <li><a class="" href="view-issues.html">View Issues</a></li>
+        <li><a class="active" href="profile.html">Profile</a></li>
+        <li><a class="" href="contact.html">Contact & Help</a></li>
+        <li><a class="nav-cta" href="/logout">Logout</a></li>
+  </ul>
+</div></nav><div class="breadcrumb"><div class="wrap"><a href="main.html">Home</a> <span>/ Profile</span></div></div>
+<main id="main" class="page"><div class="wrap">
+  <h1 class="page-title">Your Profile</h1>
+  <p class="page-intro">Your registered account details.</p>
+  <div class="panel">
+    <div id="profile-info"><div class="loading">Loading profile…</div></div>
+    <div class="profile-actions" style="margin-top:22px;text-align:center">
+      <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div>
+  </div>
+</div></main>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  fetch('/profile-data').then(function(r){return r.json();}).then(function(u){
+    document.getElementById('profile-info').innerHTML =
+      '<div class="profile-details">'
+      + '<p><strong>Name:</strong> ' + u.username + '</p>'
+      + '<p><strong>Email:</strong> ' + u.email + '</p>'
+      + '<p><strong>Member Since:</strong> ' + new Date(u.createdAt).toLocaleDateString() + '</p>'
+      + '</div>';
+  }).catch(function(){
+    document.getElementById('profile-info').innerHTML = '<p class="error">Failed to load profile data.</p>';
+  });
+});
+function logout(){ if (confirm('Are you sure you want to logout?')) window.location.href='/logout'; }
+</script><footer class="site-footer">
+  <div class="wrap foot-cols">
+    <div>
+      <h4>Civic Issue Reporter</h4>
+      <p>A citizen grievance redressal portal to report and track local civic issues such as roads, water, electricity and sanitation.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="main.html">Dashboard</a></li>
+        <li><a href="report.html">Report an Issue</a></li>
+        <li><a href="view-issues.html">View Issues</a></li>
+        <li><a href="contact.html">Contact &amp; Help</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> 1800-425-0000<br>
+      <i class="fas fa-envelope"></i> support@civicreport.ap.gov.in<br>
+      <i class="fas fa-location-dot"></i> Velagapudi, Amaravati, A.P.</p>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <div class="foot-social">
+        <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bar"><div class="wrap">
+    <span>© <span class="yr"></span> Civic Issue Reporter · Designed &amp; Developed by <strong>Lokesh Jilakara</strong></span>
+    <span class="disclaimer">Academic / demonstration project — not an official Government of Andhra Pradesh website.</span>
+  </div></div>
+</footer>
+<script>document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+<script src="js/gov.js"></script>
+</body>
+</html>
