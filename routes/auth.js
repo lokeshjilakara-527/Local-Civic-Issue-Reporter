@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
     if (!username || !password) return res.redirect('/login.html?error=missing');
 
     const user = db.findUserByUsername(username);
-
+    console.log("All users:", require('../db').findUserByUsername(username));
 console.log("Entered Username:", username);
 console.log("User Found:", user);
 
