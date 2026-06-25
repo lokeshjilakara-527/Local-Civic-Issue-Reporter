@@ -17,19 +17,31 @@ router.post('/signup', async (req, res) => {
     const email = (req.body.email || '').trim().toLowerCase();
     const password = req.body.password || '';
 
-    if (!username || !email || !password) return res.redirect('/signup.html?error=missing');
-    if (db.findUserByUsername(username)) return res.redirect('/signup.html?error=username');
-    if (db.findUserByEmail(email)) return res.redirect('/signup.html?error=email');
+    console.log("Signup Attempt:", username, email);
+
+    if (!username || !email || !password)
+      return res.redirect('/signup.html?error=missing');
+
+    if (db.findUserByUsername(username))
+      return res.redirect('/signup.html?error=username');
+
+    if (db.findUserByEmail(email))
+      return res.redirect('/signup.html?error=email');
 
     const hash = await bcrypt.hash(password, 10);
+
+    console.log("Saving user...");
+
     db.addUser({ username, email, password: hash });
+
+    console.log("User saved successfully");
+
     res.redirect('/login.html?registered=1');
   } catch (e) {
-    console.error('Signup error:', e);
+    console.error("Signup error:", e);
     res.redirect('/signup.html?error=server');
   }
 });
-
 // POST /login
 router.post('/login', async (req, res) => {
   try {
