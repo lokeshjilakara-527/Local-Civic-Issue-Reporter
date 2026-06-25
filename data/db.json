@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "_id": "mqrzma7uxt0rbc",
+      "username": "loki",
+      "email": "lokesh@gmail.com",
+      "password": "$2a$10$VSQEfkDJsGuT/ybHQcn9HO.jRh883AIMeDZQ2Hj2ycven5CpQfgcK",
+      "createdAt": "2026-06-24T11:26:03.834Z"
+    }
+  ],
+  "issues": [
+    {
+      "_id": "mqrzl0f4gg2vgr",
+      "userId": "seed",
+      "username": "Public Works Dept.",
+      "title": "Pothole on NH-16 service road",
+      "category": "Road/Infrastructure",
+      "description": "Large pothole near the bus stop causing traffic and accidents during peak hours.",
+      "location": "Benz Circle, Vijayawada",
+      "status": "In-Progress",
+      "image": null,
+      "createdAt": "2026-06-22T11:25:04.481Z"
+    },
+    {
+      "_id": "mqrzl0f6aje400",
+      "userId": "seed",
+      "username": "Sanitation Wing",
+      "title": "Overflowing garbage bin",
+      "category": "Waste Management",
+      "description": "Community bin overflowing for several days near the market area.",
+      "location": "Auto Nagar, Guntur",
+      "status": "Resolved",
+      "image": null,
+      "createdAt": "2026-06-19T11:25:04.482Z"
+    }
+  ],
+  "contacts": []
+}
